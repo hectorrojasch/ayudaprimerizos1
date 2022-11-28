@@ -1,24 +1,7 @@
-# README
+1- Para crear roles se debe entrar a consola(rails c)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2- Crear una variable de instancia con el user al que se le desea dar el rol common, sailsman, admin
 
-Things you may want to cover:
+por ej. -- rol = User.Last
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3- rol.update!(role: :admin) por ejemplo.
