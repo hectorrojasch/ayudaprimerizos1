@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_003701) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_020118) do
   create_table "article_tag_tables", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "article_tags", force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_tags_on_article_id"
+    t.index ["tag_id"], name: "index_article_tags_on_tag_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -25,6 +34,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_003701) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_articles_on_brand_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "articles_tags", id: false, force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "tag_id", null: false
   end
 
   create_table "brands", force: :cascade do |t|
@@ -52,6 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_003701) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_tags", "articles"
+  add_foreign_key "article_tags", "tags"
   add_foreign_key "articles", "brands"
   add_foreign_key "articles", "users"
 end
