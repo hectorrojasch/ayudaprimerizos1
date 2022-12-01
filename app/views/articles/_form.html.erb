@@ -25,11 +25,28 @@
     <%= form.label :user_id, style: "display: block" %>
     <%= form.text_field :user_id %>
   </div-->
+  <div>
+
+  <%= form.label :brand_id, style: "display: block" %>
 
   <%= form.collection_select :brand_id,
         Brand.all,
         :id,
         :name %>
+
+   </div>     
+
+    <div>
+
+  <%= form.label :tags, style: "display: block" %>
+
+  <%= form.collection_check_boxes :tag_ids,
+        Tag.all,
+        :id,
+        :name %>
+
+   </div>     
+
 
   <div>
     <%= form.submit %>

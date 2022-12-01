@@ -11,11 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_11_30_020118) do
-  create_table "article_tag_tables", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "article_tags", force: :cascade do |t|
     t.integer "article_id", null: false
     t.integer "tag_id", null: false
@@ -34,11 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_020118) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_articles_on_brand_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
-  end
-
-  create_table "articles_tags", id: false, force: :cascade do |t|
-    t.integer "article_id", null: false
-    t.integer "tag_id", null: false
   end
 
   create_table "brands", force: :cascade do |t|

@@ -19,4 +19,10 @@
     <%= article.brand.name %>
   </p>
 
+  <p>
+    <strong>Tags:</strong>
+    <%= article.tags.map(& :name).sort.join(' 🥨 ') %>
+  </p>
+
+
 </div>
