@@ -9,6 +9,7 @@
         <%= current_user.email %>
         <%= link_to t('.edit_profile'), edit_user_registration_path, class: "navbar-item" %>
         <%= link_to("Cerrar sesión", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }) %>
+        <%= link_to "Nuevo Pedido", new_order_path %>
       </h3>
     </li>
   <% else %>

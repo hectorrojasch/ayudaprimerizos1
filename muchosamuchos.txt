@@ -1,44 +1,48 @@
-1- generar tabla relacionadora
+1- generar ambas tablas relacionadas
 
-rails g model articleTag article:references tag:references
+En caso de faltar una se genera por scaffold o por model
 
---> de haber problema con el archivo Schema, borrarlo y hacer un -->
-
-rails db:reset
-
-1.1 rails db:migrate
-
-
-2- generar ambas tablas relacionadas
-
-
-
-2.2 crear el seed
+1.1 crear el seed para las tablas
 
 # tags = Tag.create([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: ''}, { name: '' }, { name: '' }]) 
 
-2.3 rails db:seed
+2.2 rails db:seed
+
+2- generar tabla relacionadora
+
+rails g model articleTag article:references tag:references
+
+--> en caso de haber problema,  ver el archivo Schema , por si se repiten tablas, borrarlo y hacer un -->
+
+rails db:reset 
+
+(y rails db:seed si es necesario)
+
+
+2.1 rails db:migrate
+
 
 3- mod modelos 
+
 
 Implementación de relaciones N a N con tres modelos
 (has_many :through)
 
+
 a- modelo article
 
 	has_many :article_tags, dependent: :destroy
-   has_many :tags, through: :article_tags
+  has_many :tags, through: :article_tags
+
 
 b- modelo tag 
 
 	has_many :article_tags, dependent: :destroy
-   has_many :articles, through: :article_tags
+  has_many :articles, through: :article_tags
 
 
 
-
-
-4 agregar la vista  article el tag por medio de checkboxes
+4 agregar a la vista article el tag por medio de checkboxes
 
 
 _form
@@ -52,14 +56,22 @@ _form
         :name %>
 
 
- ver configuración especial en imágenes     
+ ver configuración especial en imágenes (optativo)    
 
- _articles
+ _article
+
+ <p>
+    <strong>Tags:</strong>
+    <%= article.tags.map(& :name).sort.join(' 🥨 ') %>
+  </p>
 
 
 
-5 Agregar strong params de articles controller 
-{tag_ids:[]}
+5 Agregar strong params de articles controller para que entre el arreglo de los tags
+
+--> {tag_ids:[]} 
+
+
 
 6- pag 12 Ya teniendo el parcial del formulario, solo debemos llamarlo en nuestras respectivas vistas de new.html.erb y edit.html.erb, pasando las variable necesarias al parcial
   
