@@ -1,22 +1,27 @@
 <div id="<%= dom_id order %>">
   <p>
-    <strong>Number:</strong>
+    <strong>Cantidad de Artículos</strong>
     <%= order.number %>
   </p>
 
   <p>
-    <strong>Price:</strong>
+    <strong>Precio Total</strong>
     <%= order.price %>
   </p>
 
   <p>
-    <strong>Place:</strong>
+    <strong>Lugar de Envío</strong>
     <%= order.place %>
   </p>
 
-  <p>
-    <strong>User:</strong>
+  <!--p>
+    <strong>Usuario</strong>
     <%= order.user_id %>
+  </p-->
+  
+  <p>
+    <strong>Artículos</strong>
+    <%= order.articles.map(& :name).sort.join(' 🥨 ') %>
   </p>
 
 </div>

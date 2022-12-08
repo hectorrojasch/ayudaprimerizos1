@@ -26,12 +26,22 @@
     <%= form.text_field :place %>
   </div>
 
-  <div>
+  <!--div>
     <%= form.label 'Usuario', style: "display: block" %>
     <%= form.text_field :user_id %>
-  </div>
+   <div-->
 
-  <div>
+  <%= form.label 'Artículos', style: "display: block" %>
+
+  <%= form.collection_check_boxes :article_ids,
+        Article.all,
+        :id,
+        :name %>
+
+   </div>     
+
+   <br><hr>
+
     <%= form.submit %>
   </div>
 <% end %>

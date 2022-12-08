@@ -7,6 +7,9 @@ class User < ApplicationRecord
   enum role: [:common, :sailsman, :admin]
 
   has_many :articles, dependent: :destroy
+  has_many :orders, dependent: :destroy
+
+
 
   after_initialize do
     if self.new_record?
