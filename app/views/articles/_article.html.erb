@@ -1,4 +1,13 @@
 <div id="<%= dom_id article %>">
+
+  <p>
+    <% if article.foto.attached? %>
+      <%= image_tag article.foto %> 
+    <% else %>  
+      <%= image_tag 'foto.jpg' %>
+    <% end %>   
+
+  </p>
   <p>
     <strong>Name:</strong>
     <%= article.name %>
